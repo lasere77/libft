@@ -6,7 +6,7 @@
 #    By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/13 12:02:16 by mcolin            #+#    #+#              #
-#    Updated: 2025/12/04 16:55:54 by mcolin           ###   ########.fr        #
+#    Updated: 2025/12/15 11:31:48 by mcolin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,10 +70,10 @@ CFLAGS = -Wall -Werror -Wextra -g -I includes/
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): make_dir $(OBJS)
 	ar rcs -o $(NAME) $(OBJS)
 
-$(OBJ_DIR)%.o: $(SRCS_DIR)%.c
+make_dir:
 	@mkdir -p .build/
 	@mkdir -p .build/str
 	@mkdir -p .build/lst
@@ -83,6 +83,8 @@ $(OBJ_DIR)%.o: $(SRCS_DIR)%.c
 	@mkdir -p .build/stdio/printf
 	@mkdir -p .build/stdlib
 	@mkdir -p .build/stdlib/gnl
+
+$(OBJ_DIR)%.o: $(SRCS_DIR)%.c
 	$(CC) $(CFLAGS) $< -c -o $@
 
 fclean: clean
@@ -93,4 +95,4 @@ clean:
 
 re: fclean all
 
-.PHONY: re fclean all bonus
+.PHONY: re clean fclean all make_dir
