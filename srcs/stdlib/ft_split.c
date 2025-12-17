@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 09:55:29 by mcolin            #+#    #+#             */
-/*   Updated: 2025/12/04 14:20:54 by mcolin           ###   ########.fr       */
+/*   Updated: 2025/12/17 15:59:19 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,23 @@ static unsigned char	set_word(char const *str, char c, char **tab)
 	return (0);
 }
 
+void	*ft_free_split(char **strs)
+{
+	size_t	i;
+
+	if (!strs)
+		return (NULL);
+	i = 0;
+	while (strs[i])
+		free(strs[i++]);
+	free(strs);
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**res;
 	size_t	nb_word;
-	size_t	i;
 
 	if (!s)
 		return (NULL);
@@ -90,12 +102,6 @@ char	**ft_split(char const *s, char c)
 	if (!res)
 		return (NULL);
 	if (set_word(s, c, res))
-	{
-		i = 0;
-		while (res[i])
-			free(res[i++]);
-		free(res);
-		return (NULL);
-	}
+		res = ft_free_split(res);
 	return (res);
 }

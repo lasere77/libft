@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:55:05 by mcolin            #+#    #+#             */
-/*   Updated: 2025/12/04 14:38:02 by mcolin           ###   ########.fr       */
+/*   Updated: 2025/12/17 16:03:37 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,9 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+// BONUS +
+void	*ft_free_split(char **strs);
+char	**ft_tab_strdup(char **strs);
 
 #endif
