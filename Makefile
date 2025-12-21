@@ -6,7 +6,7 @@
 #    By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/13 12:02:16 by mcolin            #+#    #+#              #
-#    Updated: 2025/12/21 22:11:52 by mcolin           ###   ########.fr        #
+#    Updated: 2025/12/21 23:57:42 by mcolin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,9 @@ SOURCES=$(SRCS_DIR)stdlib/ft_atoi.c					\
 OBJ_DIR = .build/
 OBJS = $(SOURCES:$(SRCS_DIR)%.c=$(OBJ_DIR)%.o)
 
-CFLAGS = -Wall -Werror -Wextra -g -I includes/
+DEPS = $(SOURCES:$(SRCS_DIR)%.c=$(OBJ_DIR)%.d)
+
+CFLAGS = -MP -MMD -Wall -Werror -Wextra -g -I includes/
 
 all: $(NAME)
 
@@ -102,3 +104,5 @@ clean:
 re: fclean all
 
 .PHONY: re clean fclean all make_dir
+
+-include $(DEPS)
