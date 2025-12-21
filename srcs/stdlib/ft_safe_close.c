@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_safe_close.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 18:42:24 by mcolin            #+#    #+#             */
-/*   Updated: 2025/12/21 21:54:46 by mcolin           ###   ########.fr       */
+/*   Created: 2025/12/21 17:30:59 by mcolin            #+#    #+#             */
+/*   Updated: 2025/12/21 22:09:12 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "libft.h"
-
-char	*get_next_line(int fd);
-ssize_t	get_number_line_file(const char *file_path);
-
-char	*get_next_line_copy(const char *buffer, char *res, unsigned int i);
-int		is_new_line(char *new);
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-#endif
+void	ft_safe_close(int fd)
+{
+	if (fd > 2)
+		close(fd);
+}

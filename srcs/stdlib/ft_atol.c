@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 18:42:24 by mcolin            #+#    #+#             */
-/*   Updated: 2025/12/21 21:54:46 by mcolin           ###   ########.fr       */
+/*   Created: 2025/12/21 16:58:01 by mcolin            #+#    #+#             */
+/*   Updated: 2025/12/21 22:09:28 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "libft.h"
+long	ft_atol(const char *nptr)
+{
+	size_t	i;
+	long	res;
+	char	cond;
 
-char	*get_next_line(int fd);
-ssize_t	get_number_line_file(const char *file_path);
-
-char	*get_next_line_copy(const char *buffer, char *res, unsigned int i);
-int		is_new_line(char *new);
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-#endif
+	cond = 1;
+	i = 0;
+	res = 0;
+	while (nptr[i] == ' ' || (9 <= nptr[i] && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-')
+		cond *= -1;
+	if (nptr[i] == '+' || nptr[i] == '-')
+		i++;
+	while (ft_isdigit(nptr[i]))
+		res = res * 10 + nptr[i++] - '0';
+	return (res * cond);
+}

@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:55:05 by mcolin            #+#    #+#             */
-/*   Updated: 2025/12/17 16:03:37 by mcolin           ###   ########.fr       */
+/*   Updated: 2025/12/21 21:54:25 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,9 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 // BONUS +
 void	*ft_free_split(char **strs);
 char	**ft_tab_strdup(char **strs);
+char	ft_check_chrs(const char *s1, const char *s2);
+char	ft_strend(const char *s1, const char *s2);
+long	ft_atol(const char *nptr);
+void	ft_safe_close(int fd);
 
 #endif

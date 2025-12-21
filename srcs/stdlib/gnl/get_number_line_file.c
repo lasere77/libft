@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_number_line_file.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 18:42:24 by mcolin            #+#    #+#             */
-/*   Updated: 2025/12/21 21:54:46 by mcolin           ###   ########.fr       */
+/*   Created: 2025/12/21 22:10:18 by mcolin            #+#    #+#             */
+/*   Updated: 2025/12/21 22:11:06 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
+#include "get_next_line.h"
 
-# include "libft.h"
+#include <fcntl.h>
 
-char	*get_next_line(int fd);
-ssize_t	get_number_line_file(const char *file_path);
+ssize_t	get_number_line_file(const char *file_path)
+{
+	char	*str;
+	ssize_t	i;
+	int		fd;
 
-char	*get_next_line_copy(const char *buffer, char *res, unsigned int i);
-int		is_new_line(char *new);
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-#endif
+	fd = open(file_path, O_RDONLY);
+	if (fd <= -1)
+		return (-1);
+	i = 0;
+	str = get_next_line(fd);
+	while (str)
+	{
+		free(str);
+		str = get_next_line(fd);
+		i++;
+	}
+	close(fd);
+	return (i);
+}

@@ -6,7 +6,7 @@
 #    By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/13 12:02:16 by mcolin            #+#    #+#              #
-#    Updated: 2025/12/17 16:16:37 by mcolin           ###   ########.fr        #
+#    Updated: 2025/12/21 22:11:52 by mcolin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,11 @@ SOURCES=$(SRCS_DIR)stdlib/ft_atoi.c					\
 		$(SRCS_DIR)stdlib/ft_calloc.c				\
 		$(SRCS_DIR)stdlib/ft_split.c				\
 		$(SRCS_DIR)stdlib/ft_itoa.c					\
+		$(SRCS_DIR)stdlib/ft_atol.c					\
+		$(SRCS_DIR)stdlib/ft_safe_close.c			\
 		$(SRCS_DIR)stdlib/gnl/get_next_line.c		\
 		$(SRCS_DIR)stdlib/gnl/get_next_line_utils.c	\
+		$(SRCS_DIR)stdlib/gnl/get_number_line_file.c\
 		$(SRCS_DIR)ctype/ft_isalnum.c				\
 		$(SRCS_DIR)ctype/ft_isalpha.c				\
 		$(SRCS_DIR)ctype/ft_isascii.c				\
@@ -34,12 +37,14 @@ SOURCES=$(SRCS_DIR)stdlib/ft_atoi.c					\
 		$(SRCS_DIR)mem/ft_memmove.c					\
 		$(SRCS_DIR)mem/ft_bzero.c					\
 		$(SRCS_DIR)str/ft_strchr.c					\
+		$(SRCS_DIR)str/ft_check_chrs.c				\
 		$(SRCS_DIR)str/ft_strdup.c					\
 		$(SRCS_DIR)str/ft_tab_strdup.c				\
 		$(SRCS_DIR)str/ft_strlcat.c					\
 		$(SRCS_DIR)str/ft_strlcpy.c					\
 		$(SRCS_DIR)str/ft_strlen.c					\
 		$(SRCS_DIR)str/ft_strncmp.c					\
+		$(SRCS_DIR)str/ft_strend.c					\
 		$(SRCS_DIR)str/ft_strnstr.c					\
 		$(SRCS_DIR)str/ft_strrchr.c					\
 		$(SRCS_DIR)str/ft_substr.c					\

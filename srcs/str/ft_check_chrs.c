@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_check_chrs.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 18:42:24 by mcolin            #+#    #+#             */
-/*   Updated: 2025/12/21 21:54:46 by mcolin           ###   ########.fr       */
+/*   Created: 2025/12/21 21:46:52 by mcolin            #+#    #+#             */
+/*   Updated: 2025/12/21 21:53:46 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "libft.h"
+char	ft_check_chrs(const char *s1, const char *s2)
+{
+	size_t	i;
+	size_t	j;
 
-char	*get_next_line(int fd);
-ssize_t	get_number_line_file(const char *file_path);
-
-char	*get_next_line_copy(const char *buffer, char *res, unsigned int i);
-int		is_new_line(char *new);
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-#endif
+	if (!s1 || !s2)
+		return (1);
+	i = 0;
+	while (s1[i])
+	{
+		j = 0;
+		while (s2[j])
+		{
+			if (s1[i] == s2[j])
+				break ;
+			j++;
+		}
+		if (!s2[j])
+			return (1);
+		i++;
+	}
+	return (0);
+}
