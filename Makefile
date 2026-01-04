@@ -6,7 +6,7 @@
 #    By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/13 12:02:16 by mcolin            #+#    #+#              #
-#    Updated: 2025/12/21 23:57:42 by mcolin           ###   ########.fr        #
+#    Updated: 2026/01/04 12:18:19 by mcolin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SOURCES=$(SRCS_DIR)stdlib/ft_atoi.c					\
 		$(SRCS_DIR)str/ft_tab_strdup.c				\
 		$(SRCS_DIR)str/ft_strlcat.c					\
 		$(SRCS_DIR)str/ft_strlcpy.c					\
+		$(SRCS_DIR)str/ft_strcpy.c					\
 		$(SRCS_DIR)str/ft_strlen.c					\
 		$(SRCS_DIR)str/ft_strncmp.c					\
 		$(SRCS_DIR)str/ft_strend.c					\

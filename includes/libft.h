@@ -6,7 +6,7 @@
 /*   By: mcolin <mcolin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 14:55:05 by mcolin            #+#    #+#             */
-/*   Updated: 2025/12/21 21:54:25 by mcolin           ###   ########.fr       */
+/*   Updated: 2026/01/04 12:18:04 by mcolin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ char	ft_check_chrs(const char *s1, const char *s2);
 char	ft_strend(const char *s1, const char *s2);
 long	ft_atol(const char *nptr);
 void	ft_safe_close(int fd);
+char	*ft_strcpy(char *dst, const char *src);
 
 #endif
