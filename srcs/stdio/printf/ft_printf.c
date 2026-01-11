@@ -44,16 +44,10 @@ static int	get_format(int fd, const char fmt, va_list va, int *count)
 
 static int	print_str(int fd, const char *fmt, size_t *i, size_t *j)
 {
-	char	*str;
 	int		count;
 
-	count = 0;
-	str = ft_substr(fmt, *j, *i - *j);
-	if (!str)
-		return (0);
-	write(fd, str, ft_strlen(str));
-	free(str);
-	count += *i - *j;
+	write(fd, fmt + *j, *i - *j);
+	count = *i - *j;
 	*j = *i;
 	if (fmt[*i] == '%')
 		*j += 2;
