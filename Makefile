@@ -45,6 +45,7 @@ SOURCES=$(SRCS_DIR)stdlib/ft_atoi.c					\
 		$(SRCS_DIR)str/ft_strcpy.c					\
 		$(SRCS_DIR)str/ft_strlen.c					\
 		$(SRCS_DIR)str/ft_strncmp.c					\
+		$(SRCS_DIR)str/ft_strcmp.c					\
 		$(SRCS_DIR)str/ft_strend.c					\
 		$(SRCS_DIR)str/ft_strnstr.c					\
 		$(SRCS_DIR)str/ft_strrchr.c					\
