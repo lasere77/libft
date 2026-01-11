@@ -15,11 +15,8 @@
 
 # include "libft.h"
 
-char	*get_next_line(int fd);
-ssize_t	get_number_line_file(const char *file_path);
-
-char	*get_next_line_copy(const char *buffer, char *res, unsigned int i);
-int		is_new_line(char *new);
+char	*get_next_line(int fd, char *charset);
+ssize_t	get_number_line_file(const char *file_path, char *charset);
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42

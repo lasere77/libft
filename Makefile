@@ -21,7 +21,6 @@ SOURCES=$(SRCS_DIR)stdlib/ft_atoi.c					\
 		$(SRCS_DIR)stdlib/ft_atol.c					\
 		$(SRCS_DIR)stdlib/ft_safe_close.c			\
 		$(SRCS_DIR)stdlib/gnl/get_next_line.c		\
-		$(SRCS_DIR)stdlib/gnl/get_next_line_utils.c	\
 		$(SRCS_DIR)stdlib/gnl/get_number_line_file.c\
 		$(SRCS_DIR)ctype/ft_isalnum.c				\
 		$(SRCS_DIR)ctype/ft_isalpha.c				\

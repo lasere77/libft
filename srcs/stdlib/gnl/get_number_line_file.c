@@ -15,7 +15,7 @@
 
 #include <fcntl.h>
 
-ssize_t	get_number_line_file(const char *file_path)
+ssize_t	get_number_line_file(const char *file_path, char *charset)
 {
 	char	*str;
 	ssize_t	i;
@@ -25,11 +25,11 @@ ssize_t	get_number_line_file(const char *file_path)
 	if (fd <= -1)
 		return (-1);
 	i = 0;
-	str = get_next_line(fd);
+	str = get_next_line(fd, charset);
 	while (str)
 	{
 		free(str);
-		str = get_next_line(fd);
+		str = get_next_line(fd, charset);
 		i++;
 	}
 	close(fd);

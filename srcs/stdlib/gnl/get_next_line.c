@@ -13,21 +13,29 @@
 #include "get_next_line.h"
 #include "libft.h"
 
-static char	*ft_get_line(const char *buffer)
+static char	*ft_get_line(const char *buffer, char *charset)
 {
 	char	*res;
 	size_t	i;
+	size_t	j;
 
 	i = 0;
-	while (buffer[i] != '\n' && buffer[i])
+	while (!ft_strchr(charset, buffer[i]) && buffer[i])
 		i++;
-	if (buffer[i] == '\n')
-		i++;
+	i += (ft_strchr(charset, buffer[i]) && buffer[i]);
+	if (!i)
+		return (NULL);
 	res = malloc(sizeof(char) * (i + 1));
 	if (!res)
 		return (NULL);
 	ft_bzero(res, i + 1);
-	res = get_next_line_copy(buffer, res, i);
+	j = 0;
+	while (j < i)
+	{
+		res[j] = buffer[j];
+		j++;
+	}
+	res[j] = '\0';
 	return (res);
 }
 
@@ -44,7 +52,7 @@ static char	get_read_error(ssize_t r, char **buffer)
 	return (0);
 }
 
-static char	*read_buffer(int fd, char *buffer)
+static char	*read_buffer(int fd, char *buffer, char *charset)
 {
 	char			*new;
 	char			*tmp;
@@ -62,23 +70,22 @@ static char	*read_buffer(int fd, char *buffer)
 		tmp = buffer;
 		buffer = ft_strjoin(tmp, new);
 		free(tmp);
-		if (is_new_line(new))
+		if (ft_check_chrs(new, charset))
 			break ;
 	}
 	free(new);
 	return (buffer);
 }
 
-static char	*erase_line(char *buffer)
+static char	*erase_line(char *buffer, char *charset)
 {
 	size_t	i;
 	size_t	j;
 
 	i = 0;
-	while (buffer[i] != '\n' && buffer[i])
+	while (!ft_strchr(charset, buffer[i]) && buffer[i])
 		i++;
-	if (buffer[i] == '\n')
-		i++;
+	i += (ft_strchr(charset, buffer[i]) && buffer[i]);
 	j = 0;
 	while (buffer[i + j])
 	{
@@ -89,7 +96,7 @@ static char	*erase_line(char *buffer)
 	return (buffer);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, char *charset)
 {
 	static char		*buffer[1024] = {NULL};
 	char			*result;
@@ -100,11 +107,11 @@ char	*get_next_line(int fd)
 		buffer[fd] = NULL;
 		return (NULL);
 	}
-	buffer[fd] = read_buffer(fd, buffer[fd]);
+	buffer[fd] = read_buffer(fd, buffer[fd], charset);
 	if (!buffer[fd])
 		return (NULL);
-	result = ft_get_line(buffer[fd]);
-	buffer[fd] = erase_line(buffer[fd]);
+	result = ft_get_line(buffer[fd], charset);
+	buffer[fd] = erase_line(buffer[fd], charset);
 	if (!result || fd <= 2)
 	{
 		free(buffer[fd]);
